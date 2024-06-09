@@ -6,6 +6,7 @@ import com.heeha.domain.deathNotifier.entity.DeathNotifier;
 import com.heeha.domain.postBeneficiary.entity.PostBeneficiary;
 import com.heeha.domain.property.entity.Property;
 import jakarta.persistence.*;
+import java.time.LocalDate;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -29,10 +30,10 @@ public class LivingTrust extends BaseEntity {
     private Customer customer;
 
     @Column(name = "trust_contract_start_date")
-    private LocalDateTime trustContractStartDate;
+    private LocalDate trustContractStartDate;
 
     @Column(name = "trust_contract_end_date")
-    private LocalDateTime trustContractEndDate;
+    private LocalDate trustContractEndDate;
 
     @Column(name = "settlor", length = 50)
     private String settlor;

@@ -38,6 +38,7 @@ public class PropertyService {
                 .amount(propertyDto.getAmount())
                 .location(propertyDto.getLocation())
                 .quantity(propertyDto.getQuantity())
+                .name(propertyDto.getName())
                 .build();
 
         return propertyRepository.save(property).getId();

@@ -4,6 +4,7 @@ import com.heeha.domain.deathNotifier.dto.DeathNotifierRegisterDto;
 import com.heeha.domain.livingTrust.entity.LivingTrust;
 import com.heeha.domain.postBeneficiary.dto.PostBeneficiaryRegisterDto;
 import com.heeha.domain.property.dto.PropertyRegisterDto;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,8 +17,8 @@ public class LivingTrustDoneDto {
     private String contractNumber;
     private String settlor;
     private String trustee;
-    private LocalDateTime trustContractStartDate;
-    private LocalDateTime trustContractEndDate;
+    private LocalDate trustContractStartDate;
+    private LocalDate trustContractEndDate;
 
     private boolean isApproved;
     private List<PostBeneficiaryRegisterDto> postBeneficiary;

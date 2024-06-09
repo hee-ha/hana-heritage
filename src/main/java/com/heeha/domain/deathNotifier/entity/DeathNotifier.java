@@ -3,6 +3,7 @@ package com.heeha.domain.deathNotifier.entity;
 import com.heeha.domain.base.entity.BaseEntity;
 import com.heeha.domain.livingTrust.entity.LivingTrust;
 import jakarta.persistence.*;
+import java.time.LocalDate;
 import lombok.*;
 
 import java.time.LocalDateTime;
@@ -24,7 +25,7 @@ public class DeathNotifier extends BaseEntity {
     private String name;
     private String phoneNumber;
     private String address;
-    private LocalDateTime birthdate;
+    private LocalDate birthdate;
     private String relation;
 
     @ManyToOne

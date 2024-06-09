@@ -1,6 +1,7 @@
 package com.heeha.domain.postBeneficiary.dto;
 
 import com.heeha.domain.postBeneficiary.entity.PostBeneficiary;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,7 +12,7 @@ public class PostBeneficiaryRegisterDto {
     private String name;
     private String phoneNumber;
     private String address;
-    private LocalDateTime birthdate;
+    private LocalDate birthdate;
     private String relation;
     private String ratio;
 
