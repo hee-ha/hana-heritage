@@ -45,4 +45,25 @@ public class BatchScheduler {
             throw new RuntimeException(e);
         }
     }
+
+    // 자동이체 스케줄러
+    //cron="0/10 * * * * *"
+    @Scheduled(cron = "0 9 0 * * ?")  // 매일 9시 실행
+    public void runAutoTranferJob() {
+        LocalDate today = LocalDate.now();
+        //int day = today.getDayOfMonth();
+
+        try {
+            Job job = jobRegistry.getJob("autoTransferJob"); // job 이름
+            JobParametersBuilder jobParam = new JobParametersBuilder()
+                    .addLocalDate("today", today)
+                    .addLocalDateTime("runAt", LocalDateTime.now());
+
+            jobLauncher.run(job, jobParam.toJobParameters());
+        } catch (NoSuchJobException | JobInstanceAlreadyCompleteException | JobExecutionAlreadyRunningException |
+                 JobParametersInvalidException | JobRestartException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
 }

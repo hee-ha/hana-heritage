@@ -38,34 +38,19 @@ public class AutoTransferService {
         }
     }
 
-    // 자동이체 실행
+    // 자동이체 내역 조회
     @Transactional
-    public void executeAutoTransfers() {
-        LocalDate today = LocalDate.now();
-        int day = today.getDayOfMonth();
-
-        // 오늘날짜기준으로 이체해야될 자동이체내역 가져오기
-        List<AutoTransfer> transfers = autoTransferRepository.findByAutoTransferDay(day);
-        List<CreateAutoTransferDto> autoTransferDtoList = transfers.stream().map(CreateAutoTransferDto::new).toList();
-
-        for (CreateAutoTransferDto autoTransferDto : autoTransferDtoList) {
-            if(today.isAfter(autoTransferDto.getStartDate()) &&  today.isBefore(autoTransferDto.getEndDate())){
-                MakeTransactionDto autoTransfer = MakeTransactionDto.builder()
-                    .amount(autoTransferDto.getAmount())
-                    .recipientBank(autoTransferDto.getRecipientBank()) // 수신 은행 명
-                    .recipientAccountNumber(autoTransferDto.getToAccountNumber())
-                    .recipientRemarks(autoTransferDto.getRecipientRemarks())
-                    .senderRemarks(autoTransferDto.getSenderRemarks())
-                    .accountId(autoTransferDto.getAccountId())
-                    .password(autoTransferDto.getPassword())
-                    .build();
-
-            transferService.makeTransaction(autoTransfer);
-
+    public List<CreateAutoTransferDto> getAutoTransferByDay(int day) {
+            List<AutoTransfer> transfers = autoTransferRepository.findByAutoTransferDay(day);
+            if (transfers.isEmpty()) {
+                throw new BaseException(BaseResponseStatus.NO_AUTOTRANSFER);
+            }else {
+                List<CreateAutoTransferDto> autoTransferDtoList = transfers.stream()
+                        .map(CreateAutoTransferDto::new)
+                        .toList();
+                return autoTransferDtoList;
             }
-        }
     }
-
 
 
 }

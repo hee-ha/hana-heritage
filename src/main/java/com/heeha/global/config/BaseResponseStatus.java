@@ -54,7 +54,7 @@ public enum BaseResponseStatus {
     FAIL_REGISTER_AUTOTRANSFER(false, 3500, "자동이체 등록 실패"),
 
     // autoTransfer (4000 ~ 4999)
-
+    NO_AUTOTRANSFER(false, 4300, "오늘 날짜 기준 실행할 자동이체 내역이 없습니다."),
     // customer (5000 ~ 5999)
     DUPLICATE_CUSTOMER(false, 5000, "동일한 휴대폰 또는 주민번호로 가입된 고객입니다."),
 

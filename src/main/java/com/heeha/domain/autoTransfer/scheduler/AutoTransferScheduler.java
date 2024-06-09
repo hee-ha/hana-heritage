@@ -10,8 +10,5 @@ import org.springframework.stereotype.Component;
 public class AutoTransferScheduler {
     private final AutoTransferService autoTransferService;
 
-    @Scheduled(cron = "0 0 0 * * ?") // 매일 자정에 실행
-    public void performAutoTransfers() {
-        autoTransferService.executeAutoTransfers();
-    }
+
 }

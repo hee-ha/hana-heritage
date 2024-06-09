@@ -40,6 +40,7 @@ public class SettlementJobConfig extends DefaultBatchConfiguration {
                 .build();
         return job;
     }
+    // 어떤 역할을 할지
 
     @Bean
     @JobScope

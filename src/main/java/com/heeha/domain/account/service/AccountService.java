@@ -113,7 +113,7 @@ public class AccountService {
                     .recipientRemarks(makeTransactionDto.getRecipientRemarks())
                     .senderRemarks(makeTransactionDto.getSenderRemarks())
                     .remainBalance(account.getBalance())
-                    .sender(makeTransactionDto.getSenderRemarks())
+                    .sender(account.getCustomer().getName())
                     .senderNumber(account.getAccountNumber())
                     .account(account).build());
         }

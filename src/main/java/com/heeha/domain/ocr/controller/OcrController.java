@@ -1,4 +1,4 @@
-package com.heeha.ocr.controller;
+package com.heeha.domain.ocr.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.heeha.global.config.BaseException;
@@ -20,7 +20,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/ocr")
 public class OcrController {
-
+/*
     @Value("${naver.ocr.secret}")
     private String ocrSecret;
 
@@ -65,4 +65,6 @@ public class OcrController {
             throw new BaseException(BaseResponseStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
+ */
 }
