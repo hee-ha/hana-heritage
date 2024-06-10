@@ -20,7 +20,6 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/ocr")
 public class OcrController {
-/*
     @Value("${naver.ocr.secret}")
     private String ocrSecret;
 
@@ -65,6 +64,4 @@ public class OcrController {
             throw new BaseException(BaseResponseStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
- */
 }
