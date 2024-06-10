@@ -8,6 +8,7 @@ import com.heeha.domain.property.repository.PropertyRepository;
 import com.heeha.global.config.BaseException;
 import com.heeha.global.config.BaseResponseStatus;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,7 +16,9 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class PropertyService {
@@ -81,9 +84,17 @@ public class PropertyService {
         }
     }
     @Transactional
-    public List<Long> getAllPropertyAmountQuantity_ByType(Long livingTrustId) {
+    public Map<String, Long> getAllPropertyAmountQuantity_ByType(Long livingTrustId) {
         try {
-            return propertyRepository.findPropertiesByLivingTrust_Id(livingTrustId);
+                List<Object[]> results = propertyRepository.findPropertiesByLivingTrust_Id(livingTrustId);
+                return results.stream()
+                        .collect(Collectors.toMap(
+                                result -> (String) result[0],
+                                result -> (Long) result[1]
+                        ));
+
+
+            //return propertyRepository.findPropertiesByLivingTrust_Id(livingTrustId);
         }  catch (DataIntegrityViolationException e) {
             throw new BaseException(BaseResponseStatus.INVAILD_LIVINGTRUSTID);
         }
