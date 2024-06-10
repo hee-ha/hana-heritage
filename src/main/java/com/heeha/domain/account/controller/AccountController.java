@@ -38,7 +38,7 @@ public class AccountController {
     })
     @PostMapping("/create")
     public SuccessResult<AccountCheckResponse> createAccount(@Auth Long customerId,
-                                                             @RequestBody @Valid NormalAccountCreateDto accountCreateDto) {
+                                                             @RequestBody NormalAccountCreateDto accountCreateDto) {
         return BaseResponse.success(
                 new AccountCheckResponse(accountService.createAccount(customerId, accountCreateDto)));
     }

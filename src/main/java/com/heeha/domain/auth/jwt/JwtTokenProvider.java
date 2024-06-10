@@ -48,7 +48,7 @@ public class JwtTokenProvider {
         return createToken(refreshExpireTime, payload);
     }
 
-    private String createToken(long expireTime, Map<String, Object> payload) {
+    public String createToken(long expireTime, Map<String, Object> payload) {
         Date now = new Date();
         return Jwts.builder()
                 .setIssuer(ISSUE)
