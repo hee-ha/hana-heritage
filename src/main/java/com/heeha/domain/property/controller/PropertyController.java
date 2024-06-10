@@ -43,8 +43,12 @@ public class PropertyController {
             @ApiResponse(responseCode = "11200", description = "등록된 자산 목록 없음 (가능 : 금전, 금전채권, 유가증권, 부동산)", content = @Content(schema = @Schema(implementation = ErrorResult.class))),
     })
     @GetMapping("/chartData")
-    public SuccessResult<List<Long>> getChartData(@RequestParam Long livingtrustId) {
+    public SuccessResult<Map<String, Long>> getChartData(@RequestParam Long livingtrustId) {
         log.info("자산 차트 데이터 조회 시도 : {}", livingtrustId);
+        log.info(propertyService.getAllPropertyAmountQuantity_ByType(livingtrustId).get("금전").toString());
+        log.info(propertyService.getAllPropertyAmountQuantity_ByType(livingtrustId).get("금전채권").toString());
+        log.info(propertyService.getAllPropertyAmountQuantity_ByType(livingtrustId).get("부동산").toString());
+        log.info(propertyService.getAllPropertyAmountQuantity_ByType(livingtrustId).get("유가증권").toString());
         return BaseResponse.success(propertyService.getAllPropertyAmountQuantity_ByType(livingtrustId));
     }
 }

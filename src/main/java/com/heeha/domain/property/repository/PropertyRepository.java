@@ -12,10 +12,10 @@ import java.util.Objects;
 public interface PropertyRepository extends JpaRepository<Property, Long> {
     List<Property> findAllByLivingTrust_IdAndType(Long livingTrustId, String type);
     //금전(cash), 부동산(reality), 유가증권(security), 금전채권(bond)
-    @Query("SELECT SUM(p.amount * p.quantity) " +
+    @Query("SELECT p.type , SUM(p.amount * p.quantity) " +
             "FROM property p " +
             "JOIN p.livingTrust lt " +
             "WHERE lt.id = :livingTrustId " +
             "GROUP BY p.type")
-    List<Long> findPropertiesByLivingTrust_Id(Long livingTrustId);
+    List<Object[]> findPropertiesByLivingTrust_Id(Long livingTrustId);
 }
