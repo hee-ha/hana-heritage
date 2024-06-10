@@ -14,6 +14,7 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import jakarta.validation.Valid;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -37,7 +38,7 @@ public class AccountController {
     })
     @PostMapping("/create")
     public SuccessResult<AccountCheckResponse> createAccount(@Auth Long customerId,
-                                                             @RequestBody NormalAccountCreateDto accountCreateDto) {
+                                                             @RequestBody @Valid NormalAccountCreateDto accountCreateDto) {
         return BaseResponse.success(
                 new AccountCheckResponse(accountService.createAccount(customerId, accountCreateDto)));
     }

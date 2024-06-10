@@ -14,6 +14,7 @@ import lombok.Getter;
 @Getter
 @AllArgsConstructor
 public class LivingTrustDoneDto {
+    private Long livingTrustId;
     private String contractNumber;
     private String settlor;
     private String trustee;
@@ -26,6 +27,7 @@ public class LivingTrustDoneDto {
     private List<DeathNotifierRegisterDto> deathNotifiers;
 
     public LivingTrustDoneDto(LivingTrust livingTrust) {
+        livingTrustId = livingTrust.getId();
         contractNumber = livingTrust.getContractNumber();
         settlor = livingTrust.getSettlor();
         trustee = livingTrust.getTrustee();

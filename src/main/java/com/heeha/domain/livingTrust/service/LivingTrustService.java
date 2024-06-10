@@ -66,7 +66,7 @@ public class LivingTrustService {
             deathNotifierService.save(deathRegiDto, save);
         }
         log.info("유언 대용 신탁 계약 관련 내용 등록 완료");
-        return new LivingTrustDoneDto(save.getContractNumber(), save.getSettlor(), save.getTrustee(),
+        return new LivingTrustDoneDto(save.getId(),save.getContractNumber(), save.getSettlor(), save.getTrustee(),
                 save.getTrustContractStartDate(), save.getTrustContractEndDate(),
                 false,
                 livingTrustCreateDto.getPostBeneficiaries(),
