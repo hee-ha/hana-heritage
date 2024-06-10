@@ -15,6 +15,11 @@ spring:
     url: jdbc:mysql://heritage.cpqe6sioasnt.ap-northeast-2.rds.amazonaws.com:3306/heritage?serverTimezone=UTC&characterEncoding=UTF-8
     username: admin
     password: hanaro1234!!
+  batch:
+    job:
+      enabled: false # 서버 재시작시 배치 자동실행 방지
+      jdbc:
+        initialize-schema: always
   jpa:
     hibernate:
       ddl-auto: update
@@ -24,6 +29,8 @@ spring:
         format_sql: true
         physical_naming_strategy: org.hibernate.boot.model.naming.CamelCaseToUnderscoresNamingStrategy
         default_batch_fetch_size: 500
+  main:
+    allow-bean-definition-overriding: true # batch 작업 중 빈 중복 에러
 logging:
   level:
     root: info
